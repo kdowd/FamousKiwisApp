@@ -9,6 +9,6 @@
       Title="Test">
 
     <Grid>
-        <Components:SelfContainedCards Width="200"  />
+        <Components:SelfContainedCards HorizontalAlignment="Left" Width="320" Height="550" Background="LightGray"  />
     </Grid>
 </Page>

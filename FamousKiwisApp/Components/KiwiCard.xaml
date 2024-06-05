@@ -21,6 +21,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
+
         <TextBlock FontSize="18" Grid.Row="0" Text="{Binding FirstName }" />
         <TextBlock FontSize="18" Grid.Row="1" Text="{Binding LastName }" />
         <Image Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>

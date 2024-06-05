@@ -20,35 +20,45 @@
     </UserControl.DataContext>
     <Grid >
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-
         </Grid.RowDefinitions>
-        <TextBlock Text="Famous Kiwi's 2024" FontSize="22" TextWrapping="NoWrap" />
 
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding AllKiwisEnumerable}"  >
-                <!-- <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel> -->
+
+
+        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Famous Kiwi's 2024" FontSize="22" TextWrapping="NoWrap" />
+
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Height="Auto">
+            <ItemsControl ItemsSource="{Binding AllKiwisEnumerable}"   >
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Border BorderBrush="Black" BorderThickness="1" Padding="0" Margin="0 4">
-                            <WrapPanel Orientation="Vertical">
-                                <WrapPanel Grid.Row="1" Orientation="Horizontal">
-                                    <TextBlock  Foreground="White" Text="{Binding FirstName}" />
-                                    <TextBlock  Foreground="White" Text=" " />
-                                    <TextBlock Grid.Row="1" Foreground="White" Text="{Binding LastName}" />
+                        <Border   BorderBrush="Black" BorderThickness="1" Padding="0" Margin="0 4">
+
+                            <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                                <Image  Height="140" Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>
+
+                                <WrapPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10 0" >
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBlock  Foreground="White" Text="{Binding FirstName}" />
+                                        <TextBlock  Foreground="White" Text=" " />
+                                        <TextBlock  Foreground="White" Text="{Binding LastName}" />
+                                    </WrapPanel>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBlock  Foreground="White" Text="Email: " />
+                                        <TextBlock  Foreground="White" Text="{Binding Email}" />
+                                    </WrapPanel>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBlock  Foreground="White" Text="Age: " />
+                                        <TextBlock  Foreground="White" Text="{Binding Age}" />
+                                    </WrapPanel>
                                 </WrapPanel>
-                                <Image Grid.Row="2" Height="180"  Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>
+
                             </WrapPanel>
+
                         </Border>
 
                     </DataTemplate>
