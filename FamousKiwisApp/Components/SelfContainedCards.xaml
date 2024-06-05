@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="FamousKiwisApp.Components.SelfContainedCards"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:FamousKiwisApp.ViewModels"
+             xmlns:local="clr-namespace:FamousKiwisApp.Components"
+             d:DataContext="{d:DesignInstance Type=vm:AllKiwisCollection, IsDesignTimeCreatable=True}"
+             xmlns:converters="clr-namespace:FamousKiwisApp.Converters"
+             mc:Ignorable="d" 
+             Background="HotPink"
+             Padding="6"
+             d:DesignHeight="600" d:DesignWidth="200">
+    <UserControl.Resources>
+        <converters:Base64ToBitmapConverter x:Key="MyBase64Converter" />
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <vm:AllKiwisCollection x:Name="KiwiCollectionAlias" />
+    </UserControl.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <TextBlock Text="Famous Kiwi's 2024" FontSize="22" TextWrapping="NoWrap" />
+
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding AllKiwisEnumerable}"  >
+                <!-- <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel> -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="0" Margin="0 4">
+                            <WrapPanel Orientation="Vertical">
+                                <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                                    <TextBlock  Foreground="White" Text="{Binding FirstName}" />
+                                    <TextBlock  Foreground="White" Text=" " />
+                                    <TextBlock Grid.Row="1" Foreground="White" Text="{Binding LastName}" />
+                                </WrapPanel>
+                                <Image Grid.Row="2" Height="180"  Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>
+                            </WrapPanel>
+                        </Border>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>
+
+
+
+ 

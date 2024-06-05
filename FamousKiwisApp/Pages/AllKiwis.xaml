@@ -7,20 +7,24 @@
       xmlns:components="clr-namespace:FamousKiwisApp.Components"
       xmlns:vm="clr-namespace:FamousKiwisApp.ViewModels"
       mc:Ignorable="d" 
-      
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DataContext="{d:DesignInstance Type=vm:AllKiwisCollection, IsDesignTimeCreatable=True}"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="AllKiwis">
     <Page.DataContext>
         <vm:AllKiwisCollection x:Name="KiwiCollectionAlias" />
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="List of Kiwis" FontSize="60" Foreground="White"  />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Famous Kiwis" FontSize="60" Foreground="White"  />
 
-        <ItemsControl Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding AllKiwisEnumerable}" >
+        <ItemsControl Grid.Row="1" Margin="0,4,0,0" ItemsSource="{Binding AllKiwisEnumerable}" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <components:KiwiCard Width="200" Foreground="White" Background="OrangeRed" />
+                    <components:KiwiCard Width="260" Foreground="White" Background="OrangeRed" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>

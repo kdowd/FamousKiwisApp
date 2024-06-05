@@ -5,26 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FamousKiwisApp.Components"
              xmlns:converters="clr-namespace:FamousKiwisApp.Converters"
-               xmlns:vm="clr-namespace:FamousKiwisApp.ViewModels"
+             xmlns:vm="clr-namespace:FamousKiwisApp.ViewModels"
              mc:Ignorable="d" 
-              d:DataContext="{d:DesignInstance Type=vm:AllKiwisCollection, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-
-        <converters:YesNoToBooleanConverter x:Key="MyYesNoToBooleanConverter" />
         <converters:Base64ToBitmapConverter x:Key="MyBase64Converter" />
-
     </UserControl.Resources>
 
+
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+
         <TextBlock FontSize="18" Grid.Row="0" Text="{Binding FirstName }" />
         <TextBlock FontSize="18" Grid.Row="1" Text="{Binding LastName }" />
         <Image Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>
-
     </Grid>
 </UserControl>
+
+
