@@ -10,9 +10,16 @@
              mc:Ignorable="d" 
              Background="HotPink"
              Padding="6"
-             d:DesignHeight="600" d:DesignWidth="200">
+             d:DesignHeight="600" d:DesignWidth="200"
+             BorderBrush="Black"
+             BorderThickness="0.5"
+             >
     <UserControl.Resources>
         <converters:Base64ToBitmapConverter x:Key="MyBase64Converter" />
+        <Style TargetType="TextBlock" x:Key="SimpleData" >
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
     </UserControl.Resources>
 
     <UserControl.DataContext>
@@ -31,31 +38,31 @@
 
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Height="Auto">
-            <ItemsControl ItemsSource="{Binding AllKiwisEnumerable}"   >
+            <ItemsControl ItemsSource="{Binding AllKiwisEnumerable}">
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Border   BorderBrush="Black" BorderThickness="1" Padding="0" Margin="0 4">
+                        <Border BorderBrush="DarkGray" BorderThickness="1" Padding="0" Margin="0 4" CornerRadius="2">
 
-                            <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                            <WrapPanel Grid.Row="1" Orientation="Horizontal" Background="FloralWhite">
                                 <Image  Height="140" Source="{Binding Img, Converter={StaticResource MyBase64Converter}}"/>
 
-                                <WrapPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10 0" >
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="10 0" >
                                     <WrapPanel Orientation="Horizontal">
-                                        <TextBlock  Foreground="White" Text="{Binding FirstName}" />
-                                        <TextBlock  Foreground="White" Text=" " />
-                                        <TextBlock  Foreground="White" Text="{Binding LastName}" />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="{Binding FirstName}" />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text=" " />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="{Binding LastName}" />
                                     </WrapPanel>
                                     <WrapPanel Orientation="Horizontal">
-                                        <TextBlock  Foreground="White" Text="Email: " />
-                                        <TextBlock  Foreground="White" Text="{Binding Email}" />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="Email: " />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="{Binding Email}" />
                                     </WrapPanel>
                                     <WrapPanel Orientation="Horizontal">
-                                        <TextBlock  Foreground="White" Text="Age: " />
-                                        <TextBlock  Foreground="White" Text="{Binding Age}" />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="Age: " />
+                                        <TextBlock Style="{StaticResource SimpleData}" Text="{Binding Age}" />
                                     </WrapPanel>
-                                </WrapPanel>
+                                </StackPanel>
 
                             </WrapPanel>
 
